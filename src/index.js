@@ -1,14 +1,19 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import React from "react";
 
-class App extends React.Component {
-  render() {
-    return (
-      <h1>Hello, World!</h1>
-    );
-  }
-}
+import App from "./App";
 
-ReactDOM.render((
-  <App />
-), document.getElementById('root'));
+const defaultState = {
+  appName: "Juls_World",
+  articles: null
+};
+
+const reducer = function(state = defaultState, action) {
+  return state;
+};
+
+const store = createStore(reducer);
+
+ReactDOM.render(<App />, document.getElementById("root"));
