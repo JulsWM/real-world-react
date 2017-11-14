@@ -28,7 +28,7 @@ class Home extends Component {
             <MainView />
             <div className="col-md-3">
               <div className="sidebar">
-                <p>Popular Tags</p>
+                <p>Popular</p>
               </div>
             </div>
           </div>
