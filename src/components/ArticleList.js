@@ -1,6 +1,8 @@
 import React from "react";
+import ArticlePreview from "./ArticlePreview";
 
 const ArticleList = props => {
+  console.log(props.articles);
   if (!props.articles) {
     return <div className="article-preview">loading...</div>;
   }
@@ -14,9 +16,12 @@ const ArticleList = props => {
   }
   return (
     <div>
-      {props.articles.map(article => {
-        return <h2>{article.title}</h2>;
-      })}
+      {props.articles.map((article, index) => (
+        <div key={article.slug}>
+          <h2>{article.title}</h2>
+          <ArticlePreview article={article} />
+        </div>
+      ))}
     </div>
   );
 };
