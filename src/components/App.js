@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Header from "./Header";
+import Home from "./Home";
 
 const mapStateToProps = state => ({
   appName: state.appName
@@ -9,7 +11,13 @@ class App extends Component {
   state = {};
 
   render() {
-    return <div>{this.props.appName}</div>;
+    const appName = this.props.appName;
+    return (
+      <div>
+        <Header appName={appName} />
+        <Home />
+      </div>
+    );
   }
 }
 export default connect(mapStateToProps)(App);
