@@ -4,11 +4,22 @@ import Header from "./Header";
 import Home from "./Home";
 
 const mapStateToProps = state => ({
-  appName: state.common.appName
+  appName: state.common.appName,
+  redirectTo: state.common.redirectTo
+});
+const mapDispatchToProps = dispatch => ({
+  onRedirect: () => dispatch({ type: "REDIRECT" })
 });
 
 class App extends Component {
   state = {};
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.redirectTo) {
+      this.context.router.replace(nextProps.redirectTo);
+      this.props.onRedirect();
+    }
+  }
 
   render() {
     const appName = this.props.appName;
@@ -20,4 +31,7 @@ class App extends Component {
     );
   }
 }
+App.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 export default connect(mapStateToProps)(App);
