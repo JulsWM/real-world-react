@@ -45,7 +45,7 @@ const LoggedInView = ({ currentUser }) => {
         </li>
 
         <li className="nav-item">
-          <Link to="editor" className="nav-link">
+          <Link to="settings" className="nav-link">
             <i className="ion-compose" />&nbsp;Settings
           </Link>
         </li>
