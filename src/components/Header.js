@@ -5,7 +5,7 @@ const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-        <li classname="nav-item">
+        <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
           </Link>
@@ -32,7 +32,7 @@ const LoggedInView = ({ currentUser }) => {
   if (currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-        <li classname="nav-item">
+        <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
           </Link>
