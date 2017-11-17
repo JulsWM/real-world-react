@@ -1,12 +1,11 @@
 export default (state = {}, action) => {
   switch (action.type) {
-    case "HOME_PAGE_LOADED":
+    case "ARTICLE_PAGE_LOADED":
       return {
         ...state,
-        articles: action.payload.articles,
-        articleCount: action.payload.articlesCount
+        article: action.payload[0].article,
+        comments: action.payload[1].comments
       };
-
     default:
       return state;
   }

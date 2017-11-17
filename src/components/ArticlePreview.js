@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ArticlePreview = ({ article }) => {
   return (
     <div className="article-preview">
       <div className="article-meta">
-        <a>
+        <Link className="author" to={`@${article.author.username}`}>
           <img src={article.author.image} />
-        </a>
+        </Link>
         <div className="info">
           <a className="author">{article.author.username}</a>
           <span className="data">
@@ -22,7 +23,7 @@ const ArticlePreview = ({ article }) => {
         </div>
       </div>
 
-      <a to={`articles/${article.slug}`} className="preview-link">
+      <Link className="preview-link" to={`articles/${article.slug}`}>
         <h1>{article.title}</h1>
         <p>{article.description}</p>
         <span>Read more...</span>
@@ -33,7 +34,7 @@ const ArticlePreview = ({ article }) => {
             </li>
           ))}
         </ul>
-      </a>
+      </Link>
     </div>
   );
 };

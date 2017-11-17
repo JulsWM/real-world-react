@@ -5,6 +5,7 @@ import auth from "./reducers/auth";
 import common from "./reducers/common";
 import home from "./reducers/home";
 import settings from "./reducers/setting";
+import article from "./reducers/article";
 
 const defaultState = {
   appName: "Juls_World",
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   auth,
   common,
   home,
-  settings
+  settings,
+  article
 });
 
 const middleware = applyMiddleware(promiseMiddleware);

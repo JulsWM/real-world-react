@@ -33,7 +33,8 @@ const requests = {
 };
 
 const Articles = {
-  all: page => requests.get(`/articles?limit=10`)
+  all: page => requests.get(`/articles?limit=10`),
+  get: slug => requests.get(`/articles/${slug}`)
 };
 
 const Auth = {
@@ -44,9 +45,14 @@ const Auth = {
     requests.post("/users", { user: { username, email, password } }),
   save: user => requests.put("/user", { user })
 };
+
+const Comments = {
+  forArticle: slug => requests.get(`/articles/${slug}/comments`)
+};
 export default {
   Articles,
   Auth,
+  Comments,
   setToken: _token => {
     token = _token;
   }
