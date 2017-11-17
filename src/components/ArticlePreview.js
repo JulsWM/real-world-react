@@ -6,7 +6,7 @@ const ArticlePreview = ({ article }) => {
     <div className="article-preview">
       <div className="article-meta">
         <Link className="author" to={`@${article.author.username}`}>
-          <img src={article.author.image} />
+          <img src={article.author.image} alt="author" />
         </Link>
         <div className="info">
           <a className="author">{article.author.username}</a>
