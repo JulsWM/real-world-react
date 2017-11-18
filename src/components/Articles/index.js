@@ -5,6 +5,7 @@ import marked from "marked";
 
 import agent from "../../agent";
 import ArticleMeta from "./ArticleMeta";
+import CommentContainer from "./CommentContainer";
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -61,6 +62,9 @@ class Aritcle extends Component {
           <hr />
 
           <div className="article-actions" />
+          <div className="row">
+            <CommentContainer comments={this.props.commetns || []} />
+          </div>
         </div>
       </div>
     );

@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapStateToDispatch = dispatch => ({
-  onSubmit: payload => dispatch({ type: "ARTICLE_SUBMITTED", payload })
+  onSubmit: payload => dispatch({ type: "ARTICLE_SUBMITTED", payload }),
+  onLoad: payload => dispatch({ type: "EDITOR_PAGE_LOADED", payload })
 });
 
 class Editor extends Component {
@@ -19,6 +20,25 @@ class Editor extends Component {
     tagList: [],
     tag: ""
   };
+
+  componentWillMount() {
+    if (this.props.params.slug) {
+      return this.props.onLoad(agent.Articles.get(this.props.params.slug));
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.slug !== nextProps.params.slug) {
+      if (nextProps.params.slug) {
+        return this.props.onLoad(agent.Articles.get(this.props.params.slug));
+      }
+    }
+    if (nextProps.article) {
+      this.setState({
+        ...nextProps.article
+      });
+    }
+  }
 
   //handle input change for all form fields via the name prop
   handleInputChange = event => {
@@ -49,7 +69,12 @@ class Editor extends Component {
       tagList: this.state.tagList
     };
 
-    this.props.onSubmit(agent.Articles.create(article));
+    const slug = { slug: this.props.params.slug };
+    const promise = this.props.params.slug
+      ? agent.Articles.upadte(Object.assign(article, slug))
+      : agent.Articles.create(article);
+
+    this.props.onSubmit(promise);
   };
 
   removeTag = tag => {
