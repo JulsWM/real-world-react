@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import marked from "marked";
 
 import agent from "../../agent";
+import ArticleMeta from "./ArticleMeta";
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -30,13 +31,14 @@ class Aritcle extends Component {
       return null;
     }
     const markup = { _html: marked(article.body) };
-    // const canModify =
-    //   this.props.currentUser.username === article.author.username;
+    const canModify =
+      this.props.currentUser.username === article.author.username;
     return (
       <div className="article-page">
         <div className="banner">
           <div className="contaner">
             <h1>{article.title}</h1>
+            <ArticleMeta article={this.props.article} canModify={canModify} />
           </div>
         </div>
 
