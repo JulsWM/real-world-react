@@ -1,4 +1,4 @@
-import ArticleAction from "./ArticleAction";
+import ArticleActions from "./ArticleAction";
 import React from "react";
 import { Link } from "react-router";
 
@@ -13,7 +13,9 @@ const ArticleMeta = props => {
         <Link to={`@${article.author.username}`} className="author">
           {article.author.username}
         </Link>
-        <span className="data">{new Date(article.createAt)}</span>
+        <span className="data">
+          {new Date(article.createdAt).toDateString()}
+        </span>
       </div>
 
       <ArticleActions canModify={props.canModify} article={article} />

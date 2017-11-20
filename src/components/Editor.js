@@ -79,7 +79,7 @@ class Editor extends Component {
 
   removeTag = tag => {
     this.setState({
-      tagList: [...this.state.tagLis.tfilter(t => t !== tag)]
+      tagList: [...this.state.tagList.filter(t => t !== tag)]
     });
   };
 

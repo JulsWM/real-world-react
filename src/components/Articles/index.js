@@ -37,7 +37,7 @@ class Aritcle extends Component {
     return (
       <div className="article-page">
         <div className="banner">
-          <div className="contaner">
+          <div className="container">
             <h1>{article.title}</h1>
             <ArticleMeta article={this.props.article} canModify={canModify} />
           </div>
@@ -49,7 +49,7 @@ class Aritcle extends Component {
               <div dangerouslySetInnnerHTML={markup} />
 
               <ul className="tag-list">
-                {article.tagline.map(tag => {
+                {article.tagList.map(tag => {
                   return (
                     <li className="tag-default tag-pill tag-outline" key={tag}>
                       {tag}
@@ -63,7 +63,7 @@ class Aritcle extends Component {
 
           <div className="article-actions" />
           <div className="row">
-            <CommentContainer comments={this.props.commetns || []} />
+            <CommentContainer comments={this.props.comments || []} />
           </div>
         </div>
       </div>

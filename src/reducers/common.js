@@ -43,6 +43,10 @@ export default (state = defaultState, action) => {
         redirectTo: "/"
       };
 
+    case "ARTICLE_SUBMITTED":
+      const redirectUrl = `article/${action.payload.article.slug}`;
+      return { ...state, redirectTo: redirectUrl };
+
     case "SETTINGS_SAVED":
       return {
         ...state,
